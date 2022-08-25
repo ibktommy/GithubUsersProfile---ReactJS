@@ -1,6 +1,6 @@
 function App() {
   return (
-    <h1>Github Users Profile</h1>
+    <h3>Github Users Profile</h3>
   );
 }
 
