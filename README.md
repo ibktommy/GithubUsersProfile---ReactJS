@@ -2,7 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### This is A ReactJS based webapp that whereby a the user has to login to the webapp using any of the available login-options and then after logged-in, the user will be able to search for users-profile on Github and view some details about their activity on Github. \This project encompasses the use and implementation of core React Concepts, React Hooks, Page-Routing, Authentication, Fusion-Charts amongst others.
+### This is A ReactJS based webapp that whereby a the user has to login to the webapp using any of the available login-options and then after logged-in, the user will be able to search for users-profile on Github and view some details about their activity on Github.
+### This project encompasses the use and implementation of core React Concepts, React Hooks, Page-Routing, Authentication, Fusion-Charts amongst others.
 
 ## Available Scripts
 
