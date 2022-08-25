@@ -1,6 +1,15 @@
+import React from 'react'
+import Dashboard from './pages/Dashboard'
+import Login from './pages/Login'
+import Error from './pages/Error'
+
 function App() {
   return (
-    <h3>Github Users Profile</h3>
+    <div>
+      <Dashboard />
+      <Login />
+      <Error />
+    </div>
   );
 }
 
