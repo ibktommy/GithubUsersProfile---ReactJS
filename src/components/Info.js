@@ -1,9 +1,71 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
 import { GoRepo, GoGist } from 'react-icons/go';
 import { FiUsers, FiUserPlus } from 'react-icons/fi';
 
+const UserInfo = () => {
+  // Destructuring Values from the userData object in App-Context
+  const { userData } = useContext(GithubContext)
+  const { public_repos, followers, following, public_gists } = userData
+
+  // Creating An Array from which custom objects-values can be used
+  const items = [
+    {
+      id: 1,
+      icon: <GoRepo className='icon' />,
+      label: 'repos',
+      value: public_repos,
+      color: 'pink',
+    },
+    {
+      id: 2,
+      icon: <FiUsers className='icon' />,
+      label: 'followers',
+      value: followers,
+      color: 'green',
+    },
+    {
+      id: 3,
+      icon: <FiUserPlus className='icon' />,
+      label: 'following',
+      value: following,
+      color: 'purple',
+    },
+    {
+      id: 4,
+      icon: <GoGist className='icon' />,
+      label: 'gists',
+      value: public_gists,
+      color: 'yellow',
+    }
+  ]
+
+  return (
+    <section className="section">
+      <Wrapper className='section-center'>
+        {items.map((item) => {
+          return <ItemCard key={item.id} {...item}></ItemCard>
+        })}
+      </Wrapper>
+    </section>
+  );
+};
+
+// Creatng the ItemCard Component
+const ItemCard = ({ icon, label, value, color }) => {
+  return (
+    <article className='item'>
+      <span className={color}>{icon}</span>
+      <div>
+        <h3>{value}</h3>
+        <p>{label}</p>
+      </div>
+    </article>
+  )
+}
+
+// STYLING
 const Wrapper = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -55,12 +117,5 @@ const Wrapper = styled.section`
     }
   }
 `;
-
-const UserInfo = () => {
-  const value = React.useContext(GithubContext)
-
-  console.log(value)
-  return <h2>user info component</h2>;
-};
 
 export default UserInfo;
