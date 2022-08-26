@@ -19,9 +19,9 @@ const GithubProvider = ({ children }) => {
 
   return (
     <GithubContext.Provider value={{
-      userData: userData,
-      userFollowers: userFollowers,
-      userRepo: userRepo
+      userData,
+      userFollowers,
+      userRepo,
     }}>
       {children}
     </GithubContext.Provider>
