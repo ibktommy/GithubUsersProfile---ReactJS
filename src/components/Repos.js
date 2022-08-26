@@ -29,7 +29,8 @@ const Repos = () => {
   return (
     <section className="section">
       <Wrapper className='section-center'>
-        <FusionChart data={chartData} />
+        <Pie3D data={chartData}/>
+        {/* <FusionChart data={chartData} /> */}
       </Wrapper>
     </section>
   );

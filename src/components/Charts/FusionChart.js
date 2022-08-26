@@ -17,10 +17,6 @@ import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 // Adding the chart and theme as dependency to the core fusioncharts
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
-// STEP 2 - Chart Data
-
-// STEP 3 - Creating the JSON object to store the chart configurations
-
 // STEP 4 - Creating the DOM element to pass the react-fusioncharts component
 const FusionChart = ({ data }) => {
   const chartConfigs = {
