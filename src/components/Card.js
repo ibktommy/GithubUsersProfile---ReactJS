@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
+
 const Card = () => {
-  return <h2>card component</h2>;
+  // Destructuring Values from the userData object in App-Context
+  const { userData } = useContext(GithubContext)
+  const { avatar_url, html_url, name, company, blog, bio, location, twitter_username } = userData[0]
+
+  console.log(userData[0].avatar_url)
+
+  return (
+    <Wrapper>
+      <header>
+        <img src={avatar_url} alt={name} />
+      </header>
+    </Wrapper>
+  );
 };
+
+// A STYLED COMPONENT
 const Wrapper = styled.article`
   background: var(--clr-white);
   padding: 1.5rem 2rem;

@@ -7,7 +7,7 @@ import { FiUsers, FiUserPlus } from 'react-icons/fi';
 const UserInfo = () => {
   // Destructuring Values from the userData object in App-Context
   const { userData } = useContext(GithubContext)
-  const { public_repos, followers, following, public_gists } = userData
+  const { public_repos, followers, following, public_gists } = userData[0]
 
   // Creating An Array from which custom objects-values can be used
   const items = [

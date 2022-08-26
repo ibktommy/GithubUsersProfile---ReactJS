@@ -6,6 +6,7 @@ const Followers = () => {
   return <h2>followers component</h2>;
 };
 
+// A STYLED COMPONENT
 const Wrapper = styled.article`
   background: var(--clr-white);
   border-top-right-radius: var(--radius);
