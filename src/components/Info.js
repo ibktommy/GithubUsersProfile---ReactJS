@@ -4,10 +4,6 @@ import styled from 'styled-components';
 import { GoRepo, GoGist } from 'react-icons/go';
 import { FiUsers, FiUserPlus } from 'react-icons/fi';
 
-const UserInfo = () => {
-  return <h2>user info component</h2>;
-};
-
 const Wrapper = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -59,5 +55,12 @@ const Wrapper = styled.section`
     }
   }
 `;
+
+const UserInfo = () => {
+  const value = React.useContext(GithubContext)
+
+  console.log(value)
+  return <h2>user info component</h2>;
+};
 
 export default UserInfo;
