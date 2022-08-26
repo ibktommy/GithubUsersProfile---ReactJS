@@ -1,9 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
+import { useRef } from 'react/cjs/react.development';
 
 const Followers = () => {
-  return <h2>followers component</h2>;
+  // Destructuring Values from the userData object in App-Context
+  const { userFollowers } = useContext(GithubContext)
+  // console.log(userFollowers)
+
+  return (
+    <Wrapper>
+      <div className="followers">
+        {
+          userFollowers.map((follower, index) => {
+            const { avatar_url: img, html_url, login } = follower
+            return (
+              <article key={index}>
+                <img src={img} alt={login} />
+                <div>
+                  <h4>{login}</h4>
+                  <a href={html_url}>{html_url}</a>
+                </div>
+              </article>
+            )
+          })
+        }
+      </div>
+    </Wrapper>
+  )
 };
 
 // A STYLED COMPONENT
