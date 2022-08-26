@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { GithubContext } from '../context/context';
 import { FusionChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 
 const Repos = () => {
+  const { userRepo } = useContext(GithubContext)
+  // console.log(userRepo)
+
+  const chartData = [
+    {
+      label: "Venezuela",
+      value: "290",
+    },
+    {
+      label: "Saudi",
+      value: "260",
+    },
+    {
+      label: "Canada",
+      value: "180",
+    },
+    {
+      label: "Nigeria",
+      value: "300",
+    },
+  ];
+
   return (
-    <FusionChart />
+    <section className="section">
+      <Wrapper className='section-center'>
+        <FusionChart data={chartData} />
+      </Wrapper>
+    </section>
   );
 };
 
