@@ -16,7 +16,25 @@ const Card = () => {
           <h4>{name}</h4>
           <p>@{twitter_username || 'Username does not exist'}</p>
         </div>
+        <a href={html_url}>follow</a>
       </header>
+      <p className="bio">{bio}</p>
+      <p>
+        <MdBusiness></MdBusiness>
+        {" "}
+        {company || 'Freelancer'}
+      </p>
+      <p>
+        <MdLocationOn></MdLocationOn>
+        {" "}
+        {location || 'earth'}
+      </p>
+      <a href={blog}>
+        <MdLink></MdLink>
+        {" "}
+        {blog}
+      </a>
+
     </Wrapper>
   );
 };
