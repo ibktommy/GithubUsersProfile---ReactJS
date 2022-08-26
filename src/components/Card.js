@@ -14,7 +14,7 @@ const Card = () => {
         <img src={avatar_url} alt={name} />
         <div>
           <h4>{name}</h4>
-          <p>@{twitter_username || 'Username doesnt exist'}</p>
+          <p>@{twitter_username || 'Username does not exist'}</p>
         </div>
       </header>
     </Wrapper>
