@@ -6,14 +6,16 @@ import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
 const Card = () => {
   // Destructuring Values from the userData object in App-Context
   const { userData } = useContext(GithubContext)
-  const { avatar_url, html_url, name, company, blog, bio, location, twitter_username } = userData[0]
-
-  console.log(userData[0].avatar_url)
+  const { avatar_url, html_url, name, company, blog, bio, location, twitter_username } = userData
 
   return (
     <Wrapper>
       <header>
         <img src={avatar_url} alt={name} />
+        <div>
+          <h4>{name}</h4>
+          <p>@{twitter_username || 'Username doesnt exist'}</p>
+        </div>
       </header>
     </Wrapper>
   );
