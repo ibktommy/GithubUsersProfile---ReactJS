@@ -7,6 +7,29 @@ const Repos = () => {
   const { userRepo } = useContext(GithubContext)
   // console.log(userRepo)
 
+  let languages = userRepo.reduce((total, item) => {
+    const { language } = item
+    if (!language) return total
+
+    if (!total[language]) {
+      total[language] = {
+        label: language,
+        value: 1
+      }
+    } else {
+      total[language] = {
+        ...total[language],
+        value: total[language].value + 1,
+      }
+    }
+    // console.log(total)
+    return total
+  }, {})
+
+  languages = Object.values(languages).sort((a, b) => {
+    return b.value - a.value
+  }).slice(0, 5)
+
   const chartData = [
     {
       label: "Venezuela",
@@ -29,7 +52,7 @@ const Repos = () => {
   return (
     <section className="section">
       <Wrapper className='section-center'>
-        <Pie3D data={chartData}/>
+        <Pie3D data={languages} />
         {/* <FusionChart data={chartData} /> */}
       </Wrapper>
     </section>
