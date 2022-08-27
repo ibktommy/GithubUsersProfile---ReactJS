@@ -8,26 +8,38 @@ const Repos = () => {
   // console.log(userRepo)
 
   let languages = userRepo.reduce((total, item) => {
-    const { language } = item
+    const { language, stargazers_count } = item
     if (!language) return total
 
     if (!total[language]) {
       total[language] = {
         label: language,
-        value: 1
+        value: 1,
+        stars: stargazers_count,
       }
     } else {
       total[language] = {
         ...total[language],
         value: total[language].value + 1,
+        stars: total[language].value + stargazers_count,
       }
     }
-    // console.log(total)
     return total
   }, {})
 
-  languages = Object.values(languages).sort((a, b) => {
+  // Logic to Calculate Most Used Languages
+  const mostUsed = Object.values(languages).sort((a, b) => {
     return b.value - a.value
+  }).slice(0, 5)
+
+  // Logic to Calculate Most Starred Languages
+  const mostStarred = Object.values(languages).sort((a, b) => {
+    return b.value - a.value
+  }).map((item) => {
+    return {
+      ...item,
+      value: item.stars
+    }
   }).slice(0, 5)
 
   const chartData = [
@@ -52,9 +64,9 @@ const Repos = () => {
   return (
     <section className="section">
       <Wrapper className='section-center'>
-        <Pie3D data={languages} />
+        <Pie3D data={mostUsed} />
         <div></div>
-        <Doughnut2D data={chartData}/>
+        <Doughnut2D data={mostStarred} />
         <div></div>
         {/* <FusionChart data={chartData} /> */}
       </Wrapper>
