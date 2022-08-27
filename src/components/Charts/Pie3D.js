@@ -34,7 +34,7 @@ const FusionChart = ({ data }) => {
         // Set Decimaal
         decimals: 0,
         // Set Pie Size (radius)
-        pieRadius: '40%',
+        pieRadius: '45%',
         //Set the chart subcaption
         subCaption: "Classifying languages as used by User",
       },
