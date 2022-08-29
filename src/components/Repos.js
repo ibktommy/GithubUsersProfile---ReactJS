@@ -67,7 +67,7 @@ const Repos = () => {
         <Pie3D data={mostUsed} />
         <div></div>
         <Doughnut2D data={mostStarred} />
-        <div></div>
+        <Column3D data={chartData} />
         {/* <FusionChart data={chartData} /> */}
       </Wrapper>
     </section>
