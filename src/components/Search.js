@@ -8,6 +8,7 @@ const Search = () => {
 
   //  Handle Submit FUnction from Global Context
   const onSubmitHandler = (e) => {
+    e.preventDefault()
     console.log(e)
   }
 
@@ -18,9 +19,11 @@ const Search = () => {
         <form onSubmit={onSubmitHandler}>
           <div className="form-control">
             <MdSearch />
-            <input type="text" placeholder='Enter Github Username' />
+            <input type="text" placeholder='Enter Github Username' value={user} onChange={(e) => setUser(e.target.value)} />
+            <button className="btn">Search</button>
           </div>
         </form>
+        <h3>Requests : 60 / 60</h3>
       </Wrapper>
     </section>
   );
