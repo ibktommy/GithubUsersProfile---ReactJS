@@ -6,12 +6,16 @@ const Search = () => {
    // Set Component State
    const [user, setUser] = useState('')
 
-   
+  //  Handle Submit FUnction from Global Context
+  const onSubmitHandler = (e) => {
+    console.log(e)
+  }
+
 
   return (
     <section className="section">
       <Wrapper className='section-center'>
-        <form>
+        <form onSubmit={onSubmitHandler}>
           <div className="form-control">
             <MdSearch />
             <input type="text" placeholder='Enter Github Username' />
