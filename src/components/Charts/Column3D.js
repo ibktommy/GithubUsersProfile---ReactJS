@@ -28,7 +28,7 @@ const FusionChart = ({ data }) => {
       // Chart Configuration
       chart: {
         caption: 'Most Popular',
-        yAxisName: 'Starrs',
+        yAxisName: 'Stars',
         xAxisName: 'Repos',
         xAxisNameFontSize: "16px",
         yAxisNameFontSize: "16px",
