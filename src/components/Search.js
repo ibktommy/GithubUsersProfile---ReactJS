@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
 import { GithubContext } from '../context/context';
 const Search = () => {
-  
+   // Set Component State
+   const [user, setUser] = useState('')
+
+   
+
   return (
     <section className="section">
       <Wrapper className='section-center'>
