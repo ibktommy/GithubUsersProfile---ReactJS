@@ -17,21 +17,23 @@ const GithubProvider = ({ children }) => {
   const [userRepo, setUserRepo] = useState(mockRepos)
   const [userFollowers, setUserFollowers] = useState(mockFollowers)
   const [requests, setRequests] = useState(0)
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState({ show: false, msg: "" })
 
   // Function To Get UserData
   const searchUser = async (user) => {
     checkError()
+    setIsLoading(true)
     const response = await axios(`${rootUrl}/users/${user}`)
     .catch((error) => console.log(error.message))
-    console.log(response)
 
     if (response) {
       setUserData(response.data)
     } else {
       checkError(true, 'the username does not exist, please try again')
     }
+    checkRequests()
+    setIsLoading(false)
   }
 
   // Function To Check for Requests Limit
