@@ -6,12 +6,16 @@ const Search = () => {
    // Set Component State
    const [user, setUser] = useState('')
   //  Accessing state-values from the Gobal Context
-  const { requests, error } = useContext(GithubContext)
+  const { requests, error, searchUser } = useContext(GithubContext)
 
   //  Handle Submit FUnction from Global Context
   const onSubmitHandler = (e) => {
     e.preventDefault()
-    console.log(e)
+    
+    // Checking if user is valid
+    if (user) {
+      searchUser(user)
+    }
   }
 
 

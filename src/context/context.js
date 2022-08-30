@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import mockUser from './mockData.js/mockUser';
 import mockRepos from './mockData.js/mockRepos';
 import mockFollowers from './mockData.js/mockFollowers';
@@ -15,36 +15,51 @@ const GithubProvider = ({ children }) => {
   // Setting Global States
   const [userData, setUserData] = useState(mockUser)
   const [userRepo, setUserRepo] = useState(mockRepos)
-  const [userFollowers, setUserFolowers] = useState(mockFollowers)
+  const [userFollowers, setUserFollowers] = useState(mockFollowers)
   const [requests, setRequests] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState({ show: false, msg: "" })
 
-  // Function To Check for Requests Limit
-  const checkRequests = () => {
-    axios(`${rootUrl}/rate_limit`)
-      .then(({ data }) => {
-        let {
-          rate: { remaining },
-        } = data
-        setRequests(0)
+  // Function To Get UserData
+  const searchUser = async (user) => {
+    const response = await axios(`${rootUrl}/users/${user}`)
+    .catch((error) => console.log(error.message))
+    console.log(response)
 
-        if (requests === 0) {
-          checkError(true, 'sorry, you have exceeded your hourly rate limit!')
-        }
-      })
-      .catch((error) => console.log(error.message))
+    if (response) {
+      setUserData(response.data)
+    } else {
+      checkError(true, 'the username does not exist, please try again')
+    }
   }
 
+  // Function To Check for Requests Limit
+  const checkRequests = useCallback(
+    () => {
+      axios(`${rootUrl}/rate_limit`)
+        .then(({ data }) => {
+          let {
+            rate: { remaining },
+          } = data
+          setRequests(remaining)
+
+          if (remaining === 0) {
+            checkError(true, 'sorry, you have exceeded your hourly rate limit!')
+          }
+        })
+        .catch((error) => console.log(error.message))
+    }, []
+  )
+
   // Function to Set the Error Messages
-  const checkError = (show, msg) => {
+  const checkError = (show = false, msg = '') => {
     setError({ show, msg })
   }
 
   // Setting Up UseEffect
   useEffect(() => {
     checkRequests()
-  }, [])
+  }, [checkRequests])
 
   return (
     <GithubContext.Provider value={{
@@ -53,6 +68,7 @@ const GithubProvider = ({ children }) => {
       userRepo,
       requests,
       error,
+      searchUser,
     }}>
       {children}
     </GithubContext.Provider>
