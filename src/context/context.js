@@ -24,7 +24,6 @@ const GithubProvider = ({ children }) => {
   const checkRequests = () => {
     axios(`${rootUrl}/rate_limit`)
       .then(({ data }) => {
-        console.log(data)
         let {
           rate: { remaining },
         } = data
@@ -53,6 +52,7 @@ const GithubProvider = ({ children }) => {
       userFollowers,
       userRepo,
       requests,
+      error,
     }}>
       {children}
     </GithubContext.Provider>

@@ -6,7 +6,7 @@ const Search = () => {
    // Set Component State
    const [user, setUser] = useState('')
   //  Accessing state-values from the Gobal Context
-  const { requests } = useContext(GithubContext)
+  const { requests, error } = useContext(GithubContext)
 
   //  Handle Submit FUnction from Global Context
   const onSubmitHandler = (e) => {
@@ -18,6 +18,8 @@ const Search = () => {
   return (
     <section className="section">
       <Wrapper className='section-center'>
+        {/* Error Wrapper */}
+        {error.show && <ErrorWrapper><p>{error.msg}</p></ErrorWrapper>}
         <form onSubmit={onSubmitHandler}>
           <div className="form-control">
             <MdSearch />
