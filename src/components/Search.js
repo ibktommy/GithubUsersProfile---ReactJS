@@ -6,7 +6,7 @@ const Search = () => {
    // Set Component State
    const [user, setUser] = useState('')
   //  Accessing state-values from the Gobal Context
-  const { requests, error, searchUser } = useContext(GithubContext)
+  const { requests, error, searchUser, isLoading } = useContext(GithubContext)
 
   //  Handle Submit FUnction from Global Context
   const onSubmitHandler = (e) => {
@@ -28,7 +28,7 @@ const Search = () => {
           <div className="form-control">
             <MdSearch />
             <input type="text" placeholder='Enter Github Username' value={user} onChange={(e) => setUser(e.target.value)} />
-            {requests > 0 && <button className="btn">Search</button>}
+            {requests > 0 && !isLoading && (<button className="btn">Search</button>)}
           </div>
         </form>
         <h3>Requests : {requests} / 60</h3>
