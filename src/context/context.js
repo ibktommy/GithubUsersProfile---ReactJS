@@ -17,11 +17,12 @@ const GithubProvider = ({ children }) => {
   const [userRepo, setUserRepo] = useState(mockRepos)
   const [userFollowers, setUserFollowers] = useState(mockFollowers)
   const [requests, setRequests] = useState(0)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState({ show: false, msg: "" })
 
   // Function To Get UserData
   const searchUser = async (user) => {
+    checkError()
     const response = await axios(`${rootUrl}/users/${user}`)
     .catch((error) => console.log(error.message))
     console.log(response)
@@ -69,6 +70,7 @@ const GithubProvider = ({ children }) => {
       requests,
       error,
       searchUser,
+      isLoading,
     }}>
       {children}
     </GithubContext.Provider>
