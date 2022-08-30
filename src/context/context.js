@@ -18,6 +18,7 @@ const GithubProvider = ({ children }) => {
   const [userFollowers, setUserFolowers] = useState(mockFollowers)
   const [requests, setRequests] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState({ show: false, msg: "" })
 
   // Function To Check for Requests Limit
   const checkRequests = () => {
@@ -28,8 +29,17 @@ const GithubProvider = ({ children }) => {
           rate: { remaining },
         } = data
         setRequests(remaining)
+
+        if (remaining === 0) {
+          checkError(true, 'sorry, you have exceeded your hourly rate limit!')
+        }
       })
       .catch((error) => console.log(error.message))
+  }
+
+  // Function to Set the Error Messages
+  const checkError = (show, msg) => {
+    setError({ show, msg })
   }
 
   // Setting Up UseEffect
