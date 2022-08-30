@@ -42,6 +42,7 @@ const GithubProvider = ({ children }) => {
       userData,
       userFollowers,
       userRepo,
+      requests,
     }}>
       {children}
     </GithubContext.Provider>

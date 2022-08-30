@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
 import { GithubContext } from '../context/context';
 const Search = () => {
    // Set Component State
    const [user, setUser] = useState('')
+  //  Accessing state-values from the Gobal Context
+  const { requests } = useContext(GithubContext)
 
   //  Handle Submit FUnction from Global Context
   const onSubmitHandler = (e) => {
@@ -23,7 +25,7 @@ const Search = () => {
             <button className="btn">Search</button>
           </div>
         </form>
-        <h3>Requests : 60 / 60</h3>
+        <h3>Requests : {requests} / 60</h3>
       </Wrapper>
     </section>
   );
