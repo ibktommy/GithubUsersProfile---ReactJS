@@ -9,11 +9,13 @@ const Navbar = () => {
     loginWithRedirect,
     user,
     isLoading,
+    logout,
   } = useAuth0()
 
   return (
     <Wrapper>
       <button onClick={loginWithRedirect}>Login</button>
+      <button onClick={() => { logout({ returnTo: window.location.origin }) }}>Logout</button>
     </Wrapper>
   );
 };
