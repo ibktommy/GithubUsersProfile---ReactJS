@@ -45,7 +45,7 @@ const GithubProvider = ({ children }) => {
         if (followers.status === status) {
           setUserFollowers(followers.value.data)
         }
-      })
+      }).catch((error) => console.log(error.message))
     } else {
       checkError(true, 'the username does not exist, please try again')
     }
