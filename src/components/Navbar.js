@@ -3,9 +3,17 @@ import styled from 'styled-components';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const Navbar = () => {
+  // Destructuring Values From useAuth Object
+  const {
+    isAuthenticated,
+    loginWithRedirect,
+    user,
+    isLoading,
+  } = useAuth0()
+
   return (
     <Wrapper>
-      Navbar Component
+      <button onClick={loginWithRedirect}>Login</button>
     </Wrapper>
   );
 };

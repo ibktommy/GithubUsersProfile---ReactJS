@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Info, Repos, User, Search, Navbar } from '../components';
 import loadingImage from '../images/preloader.gif';
 import { GithubContext } from '../context/context';
-import { useCallback } from 'react/cjs/react.development';
+
 const Dashboard = () => {
   // Accessing Global Context-state from App Context
   const { isLoading } = useContext(GithubContext)
