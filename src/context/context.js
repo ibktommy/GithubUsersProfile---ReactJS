@@ -43,7 +43,7 @@ const GithubProvider = ({ children }) => {
         }
 
         if (followers.status === status) {
-          setUserFollowers(followers.status.value)
+          setUserFollowers(followers.value.data)
         }
       })
     } else {
