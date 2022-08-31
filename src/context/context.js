@@ -36,7 +36,15 @@ const GithubProvider = ({ children }) => {
         axios(`${rootUrl}/users/${login}/repos?per_page=50`),
         axios(`${followers_url}?per_page=50`),
       ]).then((results) => {
-        console.log(results)
+        const [repos, followers] = results
+        const status = 'fulfilled'
+        if (repos.status === status) {
+          setUserRepo(repos.value.data)
+        }
+
+        if (followers.status === status) {
+          setUserFollowers(followers.status.value)
+        }
       })
     } else {
       checkError(true, 'the username does not exist, please try again')
