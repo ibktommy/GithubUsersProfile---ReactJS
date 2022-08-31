@@ -31,13 +31,13 @@ const GithubProvider = ({ children }) => {
       setUserData(response.data)
       const {login, followers_url} = response.data
 
-      // Fetch Repo of User
-      axios(`${rootUrl}/users/${login}/repos?per_page=50`)
-        .then((response) => setUserRepo(response.data))
-
-      // Fetch Followers of User
-      axios(`${followers_url}?per_page=100`)
-        .then((response) => setUserFollowers(response.data))
+      // Fetch Repo of User and Fetch Followers of User
+      await Promise.allSettled([
+        axios(`${rootUrl}/users/${login}/repos?per_page=50`),
+        axios(`${followers_url}?per_page=50`),
+      ]).then((results) => {
+        console.log(results)
+      })
     } else {
       checkError(true, 'the username does not exist, please try again')
     }
