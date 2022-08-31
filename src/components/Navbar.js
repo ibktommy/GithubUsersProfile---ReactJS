@@ -12,6 +12,13 @@ const Navbar = () => {
     logout,
   } = useAuth0()
 
+  // Setting Variable that checks if isAuthenticated and user is defined
+  const isUser = isAuthenticated && user
+
+  
+
+  console.log({isAuthenticated, user, isLoading})
+
   return (
     <Wrapper>
       <button onClick={loginWithRedirect}>Login</button>
