@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { UserInfo, Repos, User, Search, Navbar } from '../components';
+import { UserInfo, Repos, User, Search, Navbar } from '../components/index';
 import loadingImage from '../images/preloader.gif';
 import { GithubContext } from '../context/context';
 
