@@ -22,12 +22,15 @@ const Wrapper = styled.section`
 `;
 
 const Login = () => {
+  // Destructuring Values from the useAuth Object
+  const { loginWithRedirect } = useAuth0()
+
   return (
     <Wrapper>
       <div className="container">
         <img src={loginImg} alt="github-user" />
         <h1>Github user</h1>
-        <button className="btn">Login</button>
+        <button className="btn" onClick={loginWithRedirect}>Login / Register</button>
       </div>
     </Wrapper>
   );
