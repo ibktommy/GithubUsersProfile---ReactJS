@@ -7,14 +7,13 @@ function App() {
     <AuthWrapper>
       <Router>
         <Routes>
-          <Route
-            path='/'
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
+          <Route path='/' element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }>
+
+          </Route>
           <Route path='/login' element={<Login />} />
           <Route path='*' element={<Error />} />
         </Routes>
