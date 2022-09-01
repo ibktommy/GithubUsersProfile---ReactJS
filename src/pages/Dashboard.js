@@ -1,7 +1,12 @@
 import React, { useContext } from 'react';
-import { UserInfo, Repos, User, Search, Navbar } from '../components/index.js';
 import loadingImage from '../images/preloader.gif';
 import { GithubContext } from '../context/context';
+
+import Navbar from "../components/Navbar"
+import Search from "../components/Search"
+import UserInfo from "../components/UserInfo"
+import User from "../components/User"
+import Repos from "../components/Repos"
 
 const Dashboard = () => {
   // Accessing Global Context-state from App Context
